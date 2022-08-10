@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Accueil from './Components/Accueil';
+import { createGlobalStyle } from 'styled-components';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Quiz from './Components/Quiz';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const GlobalStyle = createGlobalStyle`
+  *{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
 }
-
-export default App;
+`
+export default function App() {
+  return (
+      <BrowserRouter>
+        <GlobalStyle /> 
+        <Routes>
+            <Route  path='/' element={<Accueil />} />
+            <Route path='/quiz' element={<Quiz />} />
+        </Routes>
+      </BrowserRouter>
+    
+  )
+}
